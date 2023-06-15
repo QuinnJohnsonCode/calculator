@@ -5,6 +5,13 @@ function main() {
     let operator;
     let num1;
     let num2;
+
+
+    const buttons = getAllButtons();
+}
+
+function getAllButtons() {
+    return Array.from(document.getElementsByTagName("button"));
 }
 
 main();

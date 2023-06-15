@@ -32,5 +32,5 @@ export function operate(a, b, operator) {
             return divide(a, b);
     }
 
-    return "NaN";
+    return "Error!";
 }
