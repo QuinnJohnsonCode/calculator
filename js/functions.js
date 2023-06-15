@@ -32,5 +32,6 @@ export function operate(a, b, operator) {
             return divide(a, b);
     }
 
-    return "Error!";
+    // if no operator, return a
+    return a;
 }
