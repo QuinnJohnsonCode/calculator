@@ -97,6 +97,20 @@ function main() {
                 updateDisplay(display, num2);
             }
         }
+        else if (functionName === "decimal") {
+            if (activeNumberOne) {
+                if (!isDecimalInserted(num1)) {
+                    num1 += ".";
+                    updateDisplay(display, num1);
+                }
+            }
+            else {
+                if (!isDecimalInserted(num2)) {
+                    num2 += ".";
+                    updateDisplay(display, num2);
+                }
+            }
+        }
         // Operator
         else {
             // Check if it's the same operator for chaining
@@ -109,6 +123,10 @@ function main() {
             
         }
     }));
+}
+
+function isDecimalInserted(number) {
+    return number.includes(".");
 }
 
 function isSeriously(number) {
