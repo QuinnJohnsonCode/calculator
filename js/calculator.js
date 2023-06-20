@@ -1,4 +1,4 @@
-import { percentage, operate } from "./functions.js";
+import { negate, percentage, operate } from "./functions.js";
 
 function main() {
     // Determines which number is being worked with
@@ -84,6 +84,16 @@ function main() {
             }
             else {
                 num2 = percentage(num2) + "";
+                updateDisplay(display, num2);
+            }
+        }
+        else if (functionName === "negate") {
+            if (activeNumberOne) {
+                num1 = negate(num1) + "";
+                updateDisplay(display, num1);
+            }
+            else {
+                num2 = negate(num2) + "";
                 updateDisplay(display, num2);
             }
         }

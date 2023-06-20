@@ -22,6 +22,10 @@ export function percentage(a) {
     return a / 100;
 }
 
+export function negate(a) {
+    return a * -1;
+}
+
 export function operate(a, b, operator) {
     // if second number is empty, set equal to first number
     if (b === "") {
