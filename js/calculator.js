@@ -33,6 +33,11 @@ function main() {
         num1 = result;
         updateDisplay(display, num1);
     }
+
+    // switch numbers
+    const switchActiveNumber = function() {
+        activeNumberOne = !activeNumberOne;
+    }
     
     // Setup event listeners
     numberButtons.forEach(button => button.addEventListener("click", event => {
@@ -57,6 +62,7 @@ function main() {
         }
         // Operator
         else {
+            switchActiveNumber();
             operator = functionName;
         }
     }));

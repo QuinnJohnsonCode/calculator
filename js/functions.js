@@ -24,6 +24,10 @@ export function operate(a, b, operator) {
         b = a;
     }
 
+    // convert a/b to numbers
+    a = +a;
+    b = +b;
+
     // no break statement required
     // return ensures no fallthrough
     switch (operator) {
