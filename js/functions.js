@@ -19,6 +19,11 @@ export function divide(a, b) {
 }
 
 export function operate(a, b, operator) {
+    // if second number is empty, set equal to first number
+    if (b === "") {
+        b = a;
+    }
+
     // no break statement required
     // return ensures no fallthrough
     switch (operator) {

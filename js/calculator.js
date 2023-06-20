@@ -24,6 +24,15 @@ function main() {
         updateDisplay(display, num1);
     };
     clearCalculator();
+
+    // evaluate function
+    const evaluate = function() {
+        // Store Result -> Clear Calculator -> Change Num1 -> Update Display
+        let result = operate(num1, num2, operator) + "";
+        clearCalculator();
+        num1 = result;
+        updateDisplay(display, num1);
+    }
     
     // Setup event listeners
     numberButtons.forEach(button => button.addEventListener("click", event => {
@@ -41,6 +50,14 @@ function main() {
         // Clear Function
         if (functionName === "clear") {
             clearCalculator();
+        }
+        // Equals Function
+        else if (functionName === "equal") {
+            evaluate();
+        }
+        // Operator
+        else {
+            operator = functionName;
         }
     }));
 }
