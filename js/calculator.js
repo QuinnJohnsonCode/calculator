@@ -4,6 +4,9 @@ function main() {
     // Determines which number is being worked with
     let activeNumberOne;
 
+    // If an operator was changed
+    let operatorChange;
+
     // variables to be used with operate()
     let operator, num1, num2;
 
@@ -21,6 +24,7 @@ function main() {
         num1 = "0";
         num2 = "";
         activeNumberOne = true;
+        operatorChange = false;
         updateDisplay(display, num1);
     };
     clearCalculator();
@@ -41,6 +45,12 @@ function main() {
     
     // Setup event listeners
     numberButtons.forEach(button => button.addEventListener("click", event => {
+        // Only change active number if the operator was just changed
+        if (operatorChange) {
+            operatorChange = false;
+            switchActiveNumber();
+        }
+
         if (activeNumberOne) {
             num1 = appendNumber(num1, event.target.value);
             updateDisplay(display, num1);
@@ -62,8 +72,8 @@ function main() {
         }
         // Operator
         else {
-            switchActiveNumber();
             operator = functionName;
+            operatorChange = true;
         }
     }));
 }
