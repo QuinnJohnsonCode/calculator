@@ -54,7 +54,8 @@ function main() {
         if (activeNumberOne) {
             num1 = appendNumber(num1, event.target.value);
             updateDisplay(display, num1);
-        } else {
+        } 
+        else {
             num2 = appendNumber(num2, event.target.value);
             updateDisplay(display, num2);
         }
@@ -72,8 +73,14 @@ function main() {
         }
         // Operator
         else {
-            operator = functionName;
+            // Check if it's the same operator for chaining
+            // If number two is active, also evaluate
+            if (!activeNumberOne || operator === functionName) {
+                evaluate();
+            }
             operatorChange = true;
+            operator = functionName;
+            
         }
     }));
 }
