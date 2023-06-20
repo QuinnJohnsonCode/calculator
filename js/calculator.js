@@ -146,6 +146,20 @@ function appendNumber(number, newNumber) {
 
 function updateDisplay(display, num) {
     display.textContent = num.substring(0, 10);
+
+
+    // Will switch to notation after 10 digits
+    if (num.length >= 10) {
+        num = +num;
+        // Convert to Exponential form
+        let exponential = num.toExponential();
+        // Grab the notation
+        let notation = "e" + exponential.split("e")[1];
+
+        // Ensure only 9 digits show in display (most significant + notation)
+        display.textContent = exponential.substring(0, (10 - notation.length)) +
+                              notation;
+    }
 }
 
 function getAllButtons() {
