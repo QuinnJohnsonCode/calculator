@@ -145,7 +145,7 @@ function appendNumber(number, newNumber) {
 }
 
 function updateDisplay(display, num) {
-    display.textContent = num;
+    display.textContent = num.substring(0, 10);
 }
 
 function getAllButtons() {
