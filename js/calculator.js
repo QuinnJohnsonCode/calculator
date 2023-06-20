@@ -2,12 +2,10 @@ import { add, subtract, divide, multiply, operate } from "./functions.js";
 
 function main() {
     // Determines which number is being worked with
-    let activeNumberOne = true;
+    let activeNumberOne;
 
     // variables to be used with operate()
-    let operator = null;
-    let num1 = "0";
-    let num2 = "";
+    let operator, num1, num2;
 
     // Get display
     const display = document.getElementById("display");
@@ -16,6 +14,16 @@ function main() {
     const buttons = getAllButtons();
     const numberButtons = buttons.filter(button => isNumber(button.value));
     const functionButtons = buttons.filter(button => !isNumber(button.value));
+
+    // clear function
+    const clearCalculator = function() {
+        operator = null;
+        num1 = "0";
+        num2 = "";
+        activeNumberOne = true;
+        updateDisplay(display, num1);
+    };
+    clearCalculator();
     
     // Setup event listeners
     numberButtons.forEach(button => button.addEventListener("click", event => {
@@ -29,6 +37,11 @@ function main() {
     }));
 
     functionButtons.forEach(button => button.addEventListener("click", event => {
+        const functionName = event.target.value;
+        // Clear Function
+        if (functionName === "clear") {
+            clearCalculator();
+        }
     }));
 }
 
