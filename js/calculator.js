@@ -1,4 +1,4 @@
-import { add, subtract, divide, multiply, operate } from "./functions.js";
+import { percentage, operate } from "./functions.js";
 
 function main() {
     // Determines which number is being worked with
@@ -67,7 +67,7 @@ function main() {
     functionButtons.forEach(button => button.addEventListener("click", event => {
         // Check to see if Seriously? is in num1
         num1 = isSeriously(num1) ? "0" : num1;
-        
+
         const functionName = event.target.value;
         // Clear Function
         if (functionName === "clear") {
@@ -76,6 +76,16 @@ function main() {
         // Equals Function
         else if (functionName === "equal") {
             evaluate();
+        }
+        else if (functionName === "percentage") {
+            if (activeNumberOne) {
+                num1 = percentage(num1) + "";
+                updateDisplay(display, num1);
+            }
+            else {
+                num2 = percentage(num2) + "";
+                updateDisplay(display, num2);
+            }
         }
         // Operator
         else {

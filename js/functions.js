@@ -18,6 +18,10 @@ export function divide(a, b) {
     return a / b;
 }
 
+export function percentage(a) {
+    return a / 100;
+}
+
 export function operate(a, b, operator) {
     // if second number is empty, set equal to first number
     if (b === "") {
