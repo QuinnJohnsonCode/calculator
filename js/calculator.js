@@ -45,6 +45,9 @@ function main() {
     
     // Setup event listeners
     numberButtons.forEach(button => button.addEventListener("click", event => {
+        // Check to see if Seriously? is in num1
+        num1 = isSeriously(num1) ? "0" : num1;
+
         // Only change active number if the operator was just changed
         if (operatorChange) {
             operatorChange = false;
@@ -62,6 +65,9 @@ function main() {
     }));
 
     functionButtons.forEach(button => button.addEventListener("click", event => {
+        // Check to see if Seriously? is in num1
+        num1 = isSeriously(num1) ? "0" : num1;
+        
         const functionName = event.target.value;
         // Clear Function
         if (functionName === "clear") {
@@ -83,6 +89,10 @@ function main() {
             
         }
     }));
+}
+
+function isSeriously(number) {
+    return number === "Seriously?";
 }
 
 function appendNumber(number, newNumber) {
