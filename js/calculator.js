@@ -38,6 +38,29 @@ function main() {
         updateDisplay(display, num1);
     }
 
+    // updateActiveNumber function
+    const updateActiveNumber = function(newNumber, append=false, decimal=false) {
+        if (append) {
+            num1 = activeNumberOne ? appendNumber(num1, newNumber) : num1;
+            num2 = activeNumberOne ? num2 : appendNumber(num2, newNumber);
+        }
+        else if (decimal) {
+            num1 = (activeNumberOne && !isDecimalInserted(num1)) ?
+                   num1 + "." : num1;
+            num2 = (activeNumberOne && !isDecimalInserted(num2)) ?
+                   num2 : num2 + ".";
+        }
+        else {
+            num1 = activeNumberOne ? newNumber : num1;
+            num2 = activeNumberOne ? num2 : newNumber;
+        }
+
+        if (activeNumberOne)
+            updateDisplay(display, num1);
+        else
+            updateDisplay(display, num2);
+    }
+
     // switch numbers
     const switchActiveNumber = function() {
         activeNumberOne = !activeNumberOne;
@@ -54,14 +77,7 @@ function main() {
             switchActiveNumber();
         }
 
-        if (activeNumberOne) {
-            num1 = appendNumber(num1, event.target.value);
-            updateDisplay(display, num1);
-        } 
-        else {
-            num2 = appendNumber(num2, event.target.value);
-            updateDisplay(display, num2);
-        }
+        updateActiveNumber(event.target.value, true);
     }));
 
     functionButtons.forEach(button => button.addEventListener("click", event => {
@@ -78,38 +94,17 @@ function main() {
             evaluate();
         }
         else if (functionName === "percentage") {
-            if (activeNumberOne) {
-                num1 = percentage(num1) + "";
-                updateDisplay(display, num1);
-            }
-            else {
-                num2 = percentage(num2) + "";
-                updateDisplay(display, num2);
-            }
+            const numToChange = (activeNumberOne ?
+                                percentage(num1) : percentage(num2)) + "";
+            updateActiveNumber(numToChange);
         }
         else if (functionName === "negate") {
-            if (activeNumberOne) {
-                num1 = negate(num1) + "";
-                updateDisplay(display, num1);
-            }
-            else {
-                num2 = negate(num2) + "";
-                updateDisplay(display, num2);
-            }
+            const numToChange = (activeNumberOne ?
+                negate(num1) : negate(num2)) + "";
+            updateActiveNumber(numToChange);
         }
         else if (functionName === "decimal") {
-            if (activeNumberOne) {
-                if (!isDecimalInserted(num1)) {
-                    num1 += ".";
-                    updateDisplay(display, num1);
-                }
-            }
-            else {
-                if (!isDecimalInserted(num2)) {
-                    num2 += ".";
-                    updateDisplay(display, num2);
-                }
-            }
+            updateActiveNumber(".", false, true);
         }
         // Operator
         else {
@@ -130,7 +125,7 @@ function isDecimalInserted(number) {
 }
 
 function isSeriously(number) {
-    return number === "Seriously?";
+    return number === "Seriously";
 }
 
 function appendNumber(number, newNumber) {
