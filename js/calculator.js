@@ -1,4 +1,5 @@
 import { negate, percentage, operate } from "./functions.js";
+import { createRipple } from "./button-ripple.js";
 
 function main() {
     // Determines which number is being worked with
@@ -67,6 +68,8 @@ function main() {
     }
     
     // Setup event listeners
+    buttons.forEach(button => button.addEventListener("click", createRipple));
+
     numberButtons.forEach(button => button.addEventListener("click", event => {
         // Check to see if Seriously? is in num1
         num1 = isSeriously(num1) ? "0" : num1;

@@ -62,11 +62,29 @@ button {
     outline: inherit;
     border: none;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
     
     width: 75px;
     height: 75px;
     color: var(--white);
     background-color: var(--orange);
+}
+
+/* Button Ripple Effect: https://codepen.io/campao/pen/EmPvbM" */
+button .ripple {
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    transform: scale(0);
+    animation: ripple 0.3s linear;
+}
+  
+@keyframes ripple {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
 }
 
 .dark-button {
