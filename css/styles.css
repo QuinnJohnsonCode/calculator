@@ -37,13 +37,20 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     padding: 0 30px;
-    font-size: 60px;
+    font-size: 52px;
     align-self: flex-end;
-    letter-spacing: 1px;
+    letter-spacing: 0;
 
     width: 475px;
     height: 200px;
     direction: rtl;
+
+    position: relative;
+}
+
+#display-value {
+    position: absolute;
+    bottom: 0;
 }
 
 button {

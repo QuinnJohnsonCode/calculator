@@ -11,7 +11,7 @@ function main() {
     let operator, num1, num2;
 
     // Get display
-    const display = document.getElementById("display");
+    const display = document.getElementById("display-value");
 
     // Gather buttons
     const buttons = getAllButtons();
